@@ -1,0 +1,30 @@
+name: Deploy Sanity Studio
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy Sanity Studio
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
+          SANITY_STUDIO_DATASET: production
+        run: npx sanity deploy --yes

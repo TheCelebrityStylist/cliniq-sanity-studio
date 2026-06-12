@@ -1,0 +1,19 @@
+{
+  "name": "cliniq-sanity-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sanity dev --host 0.0.0.0",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "latest",
+    "sanity": "latest",
+    "styled-components": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}

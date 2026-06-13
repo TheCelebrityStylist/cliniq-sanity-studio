@@ -25,4 +25,4 @@ jobs:
       - name: Deploy Studio
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-        run: npm run deploy -- --yes --url cliniq-maastricht
+        run: npm run deploy -- --yes

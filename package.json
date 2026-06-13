@@ -9,11 +9,11 @@
     "deploy": "sanity deploy"
   },
   "dependencies": {
-    "sanity": "^3.84.0",
-    "@sanity/vision": "^3.84.0",
-    "styled-components": "^6.1.13"
+    "sanity": "3.84.0",
+    "@sanity/vision": "3.84.0",
+    "styled-components": "6.1.15"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "5.8.3"
   }
 }

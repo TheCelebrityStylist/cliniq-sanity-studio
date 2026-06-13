@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: 'jlnikrdc',
     dataset: 'production',
   },
+  studioHost: 'cliniq-maastricht',
 })

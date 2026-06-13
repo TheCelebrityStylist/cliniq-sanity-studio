@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -22,9 +22,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy Sanity Studio
+      - name: Verify Sanity files
+        run: |
+          ls -la
+          test -f sanity.config.ts || (echo "Missing sanity.config.ts" && exit 1)
+          test -f package.json || (echo "Missing package.json" && exit 1)
+
+      - name: Deploy Studio
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
-          SANITY_STUDIO_PROJECT_ID: ${{ secrets.SANITY_STUDIO_PROJECT_ID }}
-          SANITY_STUDIO_DATASET: production
-        run: npx sanity@latest deploy --yes --url cliniq-maastricht
+        run: |
+          npx sanity@latest deploy \
+          --yes \
+          --url cliniq-maastricht

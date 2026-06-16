@@ -32,8 +32,30 @@ export default defineType({
     defineField({ name: 'heroImage', title: 'Hero image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'galleryImages', title: 'Gallery / carousel images', type: 'array', of: [{ type: 'image', options: { hotspot: true } }] }),
 
-    defineField({ name: 'bodyNl', title: 'SEO/body text NL', type: 'text', rows: 8 }),
-    defineField({ name: 'bodyEn', title: 'SEO/body text EN', type: 'text', rows: 8 }),
+    defineField({
+      name: 'practicalCards',
+      title: 'Practical cards',
+      type: 'array',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({ name: 'titleNl', title: 'Title NL', type: 'string' }),
+          defineField({ name: 'titleEn', title: 'Title EN', type: 'string' }),
+          defineField({ name: 'textNl', title: 'Text NL', type: 'text', rows: 3 }),
+          defineField({ name: 'textEn', title: 'Text EN', type: 'text', rows: 3 }),
+        ],
+      }],
+    }),
+
+    defineField({ name: 'bodyNl', title: 'Main SEO/body text NL', type: 'text', rows: 8 }),
+    defineField({ name: 'bodyEn', title: 'Main SEO/body text EN', type: 'text', rows: 8 }),
+
+    defineField({ name: 'extraTitleNl', title: 'Extra section title NL', type: 'string' }),
+    defineField({ name: 'extraTitleEn', title: 'Extra section title EN', type: 'string' }),
+    defineField({ name: 'extraIntroNl', title: 'Extra section intro NL', type: 'text', rows: 3 }),
+    defineField({ name: 'extraIntroEn', title: 'Extra section intro EN', type: 'text', rows: 3 }),
+    defineField({ name: 'extraBodyNl', title: 'Extra section body NL', type: 'text', rows: 8 }),
+    defineField({ name: 'extraBodyEn', title: 'Extra section body EN', type: 'text', rows: 8 }),
 
     defineField({ name: 'seoTitleNl', title: 'SEO title NL', type: 'string' }),
     defineField({ name: 'seoTitleEn', title: 'SEO title EN', type: 'string' }),
@@ -46,10 +68,6 @@ export default defineType({
     defineField({ name: 'ogImage', title: 'Open Graph image', type: 'image', options: { hotspot: true } }),
   ],
   preview: {
-    select: {
-      title: 'title',
-      subtitle: 'pageKey',
-      media: 'heroImage',
-    },
+    select: { title: 'title', subtitle: 'pageKey', media: 'heroImage' },
   },
 })
